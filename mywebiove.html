@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Arif Beedi ❤️</title>
+
+<style>
+
+body{
+
+margin:0;
+font-family:Segoe UI;
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+
+overflow:hidden;
+
+color:white;
+
+text-align:center;
+
+}
+
+
+/* pages */
+
+.section{display:none;}
+.active{display:block;}
+
+
+/* cinematic intro */
+
+#intro{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background:black;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+animation:introfade 3s forwards;
+
+}
+
+@keyframes introfade{
+
+0%{opacity:1;}
+
+80%{opacity:1;}
+
+100%{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+}
+
+
+/* card */
+
+.card{
+
+background:#de128cd4;
+
+padding:40px;
+
+border-radius:18px;
+
+-webkit-backdrop-filter:blur(14px);
+
+backdrop-filter:blur(14px);
+
+box-shadow:0 10px 35px black;
+
+max-width:420px;
+
+animation:fade 1s ease;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+/* buttons */
+
+button{
+
+padding:12px 25px;
+
+margin:10px;
+
+border:none;
+
+border-radius:25px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+
+/* shake password */
+
+.shake{
+
+animation:shake .3s;
+
+}
+
+@keyframes shake{
+
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+
+}
+
+
+/* hearts */
+
+.heart{
+
+position:absolute;
+
+font-size:22px;
+
+animation:fall 9s linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{top:-10%;}
+
+100%{top:110%;}
+
+}
+
+
+/* particles */
+
+canvas{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+#message{
+
+margin-top:20px;
+
+font-size:18px;
+
+line-height:1.6;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- intro -->
+
+<div id="intro">
+
+✨ A Special Surprise ✨
+
+</div>
+
+
+<canvas id="bg"></canvas>
+
+
+<!-- welcome -->
+
+<div id="welcome" class="section active">
+
+<div class="card">
+
+<h2> For Arif Beedi ❤️</h2>
+
+<p>A small surprise from Gousiya hehe </p>
+
+<button onclick="showPage('login')">
+
+Click here
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- password -->
+
+<div id="login" class="section">
+
+<div class="card" id="passCard">
+
+<h3> Enter Password To Unlock 🔐</h3>
+
+<input id="pass" placeholder="Enter Password">
+
+<br>
+
+<button onclick="checkPass()">
+
+Enter
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- main -->
+
+<div id="home" class="section">
+
+<div class="card">
+
+<h2>✨ My Love Arif ❤️ ✨</h2>
+
+<button onclick="openMessage()">
+
+Open Message
+
+</button>
+
+<div id="message"></div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* page switch */
+
+function showPage(id){
+
+document.querySelectorAll(".section")
+
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id)
+
+.classList.add("active");
+
+}
+
+
+/* password */
+
+function checkPass(){
+
+let card=document.getElementById("passCard");
+
+if(document.getElementById("pass")
+
+.value==="love"){
+
+showPage("home");
+
+}
+
+else{
+
+card.classList.add("shake");
+
+setTimeout(()=>{
+
+card.classList.remove("shake");
+
+},300);
+
+}
+
+}
+
+
+/* typing message */
+
+function openMessage(){
+
+let text=
+
+"You're mine  My love ,My man , My husband , My world ,My everything , My favourite person 💗💗💗 I LOVE YOU SO MUCH ❤️✨ .";
+
+let i=0;
+
+let msg=document.getElementById("message");
+
+msg.innerHTML="";
+
+let typing=setInterval(()=>{
+
+msg.innerHTML+=text.charAt(i);
+
+i++;
+
+if(i>=text.length){
+
+clearInterval(typing);
+
+}
+
+},40);
+
+}
+
+
+/* hearts */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.className="heart";
+
+heart.style.left=Math.random()*100+"%";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),9000);
+
+},900);
+
+
+/* fireworks + particles */
+
+let canvas=document.getElementById("bg");
+
+let ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+
+canvas.height=innerHeight;
+
+let p=[];
+
+function create(){
+
+for(let i=0;i<40;i++){
+
+p.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+vx:(Math.random()-.5)*2,
+
+vy:(Math.random()-.5)*2,
+
+life:100
+
+});
+
+}
+
+}
+
+setInterval(create,2000);
+
+function draw(){
+
+ctx.clearRect(0,0,
+
+canvas.width,
+
+canvas.height);
+
+p.forEach(a=>{
+
+ctx.fillStyle="white";
+
+ctx.fillRect(a.x,a.y,2,2);
+
+a.x+=a.vx;
+
+a.y+=a.vy;
+
+a.life--;
+
+});
+
+p=p.filter(a=>a.life>0);
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+
+</html>
